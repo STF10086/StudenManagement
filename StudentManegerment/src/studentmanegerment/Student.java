@@ -1,22 +1,22 @@
 package studentmanegerment;
 
-import org.eclipse.swt.widgets.DateTime;
-
 public class Student {
 	private String ma;
 	private String hoten;
-	private DateTime ngaysinh;
 	private String gioitinh;
-	public Student(String ma, String hoten, DateTime ngaysinh, String gioitinh) {
+	private String email;
+	public Student(String ma, String hoten, String gioitinh, String email) {
 		super();
 		this.ma = ma;
 		this.hoten = hoten;
-		this.ngaysinh = ngaysinh;
 		this.gioitinh = gioitinh;
+		this.email = email;
 	}
 	public Student(String ma) {
-		super();
-		this.ma = ma;
+		this(ma,"hoten","gioitinh","email");
+	}
+	public Student() {
+		this("Mã sinh viên");
 	}
 	public String getMa() {
 		return ma;
@@ -30,23 +30,23 @@ public class Student {
 	public void setHoten(String hoten) {
 		this.hoten = hoten;
 	}
-	public DateTime getNgaysinh() {
-		return ngaysinh;
-	}
-	public void setNgaysinh(DateTime ngaysinh) {
-		this.ngaysinh = ngaysinh;
-	}
 	public String getGioitinh() {
 		return gioitinh;
 	}
 	public void setGioitinh(String gioitinh) {
 		this.gioitinh = gioitinh;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ma == null) ? 0 : ma.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		return result;
 	}
 	@Override
@@ -58,20 +58,21 @@ public class Student {
 		if (getClass() != obj.getClass())
 			return false;
 		Student other = (Student) obj;
-		if (ma == null) {
-			if (other.ma != null)
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		} else if (!ma.equals(other.ma))
+		} else if (!email.equalsIgnoreCase(other.email))
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Student [ma=" + ma + ", hoten=" + hoten + ", ngaysinh=" + ngaysinh + ", gioitinh=" + gioitinh + "]";
+		return "Student [ma=" + ma + ", hoten=" + hoten + ", gioitinh=" + gioitinh + ", email=" + email + "]";
 	}
 	
 	
 	
 	
 	
+
 }

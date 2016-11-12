@@ -6,28 +6,16 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.DateTime;
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.List;
-import org.eclipse.jface.viewers.ListViewer;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.jface.viewers.TableViewer;
-import org.eclipse.jface.viewers.CheckboxTableViewer;
-import org.eclipse.jface.viewers.ComboViewer;
-import org.eclipse.swt.widgets.Menu;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.custom.ViewForm;
 
 public class FrmStudent {
 
-	protected Shell shlFrmapp;
+	protected Shell shell;
 	private Text text;
 	private Text text_1;
+	private Text text_2;
 	private Table table;
 
 	/**
@@ -49,9 +37,9 @@ public class FrmStudent {
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
-		shlFrmapp.open();
-		shlFrmapp.layout();
-		while (!shlFrmapp.isDisposed()) {
+		shell.open();
+		shell.layout();
+		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -62,76 +50,73 @@ public class FrmStudent {
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
-		shlFrmapp = new Shell();
-		shlFrmapp.setSize(648, 379);
-		shlFrmapp.setText("FrmApp");
-		shlFrmapp.setLayout(null);
+		shell = new Shell();
+		shell.setSize(710, 509);
+		shell.setText("SWT Application");
 		
-		Label lblStudentmanagerment = new Label(shlFrmapp, SWT.NONE);
-		lblStudentmanagerment.setFont(SWTResourceManager.getFont("Segoe UI", 16, SWT.NORMAL));
-		lblStudentmanagerment.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
-		lblStudentmanagerment.setAlignment(SWT.CENTER);
-		lblStudentmanagerment.setBounds(209, 10, 244, 41);
-		lblStudentmanagerment.setText("StudentManagerment");
+		Label lblNewLabel = new Label(shell, SWT.NONE);
+		lblNewLabel.setFont(SWTResourceManager.getFont("Segoe UI", 18, SWT.NORMAL));
+		lblNewLabel.setAlignment(SWT.CENTER);
+		lblNewLabel.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
+		lblNewLabel.setBounds(201, 10, 286, 51);
+		lblNewLabel.setText("Student Management");
 		
-		Label lblHVTn = new Label(shlFrmapp, SWT.NONE);
-		lblHVTn.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
-		lblHVTn.setBounds(37, 89, 55, 21);
-		lblHVTn.setText("H\u1ECD v\u00E0 t\u00EAn:");
+		Label lblNewLabel_1 = new Label(shell, SWT.NONE);
+		lblNewLabel_1.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
+		lblNewLabel_1.setBounds(73, 75, 55, 30);
+		lblNewLabel_1.setText("MSSV:");
 		
-		Label lblMssv = new Label(shlFrmapp, SWT.SHADOW_IN | SWT.CENTER);
-		lblMssv.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
-		lblMssv.setAlignment(SWT.LEFT);
-		lblMssv.setBounds(37, 60, 55, 21);
-		lblMssv.setText("MSSV:");
+		Label lblHTn = new Label(shell, SWT.NONE);
+		lblHTn.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
+		lblHTn.setText("Họ tên");
+		lblHTn.setBounds(73, 111, 60, 30);
 		
-		text = new Text(shlFrmapp, SWT.BORDER);
-		text.setBounds(109, 57, 104, 21);
-		
-		text_1 = new Text(shlFrmapp, SWT.BORDER);
-		text_1.setBounds(109, 86, 207, 21);
-		
-		Label lblNgySinh = new Label(shlFrmapp, SWT.NONE);
-		lblNgySinh.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
-		lblNgySinh.setBounds(356, 89, 68, 21);
-		lblNgySinh.setText("Ng\u00E0y Sinh:");
-		
-		DateTime dateTime = new DateTime(shlFrmapp, SWT.BORDER);
-		dateTime.setBounds(450, 86, 129, 24);
-		
-		Label lblGiiTnh = new Label(shlFrmapp, SWT.NONE);
+		Label lblGiiTnh = new Label(shell, SWT.NONE);
 		lblGiiTnh.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
-		lblGiiTnh.setBounds(37, 115, 68, 21);
-		lblGiiTnh.setText("Gi\u1EDBi t\u00EDnh:");
+		lblGiiTnh.setText("Giới tính:");
+		lblGiiTnh.setBounds(73, 147, 60, 30);
 		
-		Button btnRadioButton = new Button(shlFrmapp, SWT.RADIO);
-		btnRadioButton.setBounds(167, 114, 55, 16);
-		btnRadioButton.setText("N\u1EEF");
+		Label lblEmail = new Label(shell, SWT.NONE);
+		lblEmail.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
+		lblEmail.setText("Email");
+		lblEmail.setBounds(73, 183, 60, 30);
 		
-		Button btnNam = new Button(shlFrmapp, SWT.RADIO);
-		btnNam.setBounds(109, 113, 55, 16);
-		btnNam.setText("Nam");
+		text = new Text(shell, SWT.BORDER);
+		text.setBounds(146, 67, 103, 25);
 		
-		table = new Table(shlFrmapp, SWT.BORDER | SWT.FULL_SELECTION);
-		table.setBounds(37, 161, 542, 150);
+		text_1 = new Text(shell, SWT.BORDER);
+		text_1.setBounds(146, 105, 183, 25);
+		
+		text_2 = new Text(shell, SWT.BORDER);
+		text_2.setBounds(146, 175, 183, 25);
+		
+		Combo combo = new Combo(shell, SWT.NONE);
+		combo.setBounds(146, 142, 91, 25);
+		
+		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+		table.setBounds(73, 258, 486, 170);
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 		
-		TableColumn tblclmnNewColumn_1 = new TableColumn(table, SWT.CENTER);
-		tblclmnNewColumn_1.setWidth(134);
-		tblclmnNewColumn_1.setText("MSSV");
+		TableColumn tblclmnMssv = new TableColumn(table, SWT.CENTER);
+		tblclmnMssv.setWidth(120);
+		tblclmnMssv.setText("MSSV");
 		
-		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.NONE);
-		tblclmnNewColumn.setWidth(134);
-		tblclmnNewColumn.setText("H\u1ECD v\u00E0 t\u00EAn");
+		TableColumn tblclmnHTn = new TableColumn(table, SWT.NONE);
+		tblclmnHTn.setWidth(120);
+		tblclmnHTn.setText("Họ tên");
 		
-		TableColumn tblclmnNewColumn_2 = new TableColumn(table, SWT.CENTER);
-		tblclmnNewColumn_2.setWidth(134);
-		tblclmnNewColumn_2.setText("Ng\u00E0y Sinh");
+		TableColumn tblclmnGiiTnh = new TableColumn(table, SWT.NONE);
+		tblclmnGiiTnh.setWidth(120);
+		tblclmnGiiTnh.setText("Giới tính");
 		
-		TableColumn tblclmnNewColumn_3 = new TableColumn(table, SWT.CENTER);
-		tblclmnNewColumn_3.setWidth(134);
-		tblclmnNewColumn_3.setText("Gi\u1EDBi t\u00EDnh");
+		TableColumn tblclmnEmail = new TableColumn(table, SWT.NONE);
+		tblclmnEmail.setWidth(120);
+		tblclmnEmail.setText("Email");
+		
+		Label lblListStudent = new Label(shell, SWT.NONE);
+		lblListStudent.setBounds(73, 237, 55, 15);
+		lblListStudent.setText("List Student");
 
 	}
 }
